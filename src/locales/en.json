@@ -1,18 +1,18 @@
 {
   "$schema": "../../docs/home.schema.json",
   "site": {
-    "name": "Anvil Quest Wiki",
-    "shortName": "AQ Wiki",
-    "description": "Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Updated daily by the community.",
-    "tagline": "Your forge for everything Anvil Quest",
-    "legalNotice": "Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer."
+    "name": "Withering Realms Wiki",
+    "shortName": "WR Wiki",
+    "description": "Independent Withering Realms wiki covering release details, confirmed gameplay systems, locations, weapons, allies, and official updates.",
+    "tagline": "The independent guide to Withering Realms",
+    "legalNotice": "Withering Realms Wiki is a fan-made guide. Not affiliated with or endorsed by Moonless Formless."
   },
   "nav": {
     "home": "Home",
-    "bosses": "Bosses",
     "guides": "Guides",
     "items": "Items",
-    "codes": "Codes",
+    "maps": "World",
+    "characters": "Characters",
     "toggleTheme": "Toggle theme",
     "menu": "Menu",
     "close": "Close",
@@ -27,7 +27,7 @@
     "lastUpdated": "Last updated",
     "publishedOn": "Published",
     "noArticles": "No articles yet. Check back soon!",
-    "defaultListDescription": "Browse every {title} article — walkthroughs, tips, tier lists and up-to-date reference tables, all in one place.",
+    "defaultListDescription": "Browse every {title} article, with confirmed facts, official sources, and clearly marked unknowns.",
     "relatedArticles": "Related Articles",
     "onThisPage": "On this page",
     "browseAll": "Browse all",
@@ -58,20 +58,20 @@
     },
     "codesFaq": [
       {
-        "question": "How do I redeem codes?",
-        "answer": "Open the game, click the settings gear in the top-right, paste your code into the Redeem Code field, and confirm. Codes are case-sensitive."
+        "question": "Does this wiki list Withering Realms codes?",
+        "answer": "No official code system has been confirmed, so this wiki does not publish redemption instructions or code lists."
       },
       {
-        "question": "Why do codes stop working?",
-        "answer": "Codes expire on a schedule set by the developer (usually monthly or tied to update milestones), and some are one-per-account. This page is re-tested regularly."
+        "question": "Has Moonless Formless announced redeemable codes?",
+        "answer": "The official website and current Steam listing do not announce a redeemable-code feature."
       },
       {
-        "question": "How often are new codes released?",
-        "answer": "New codes typically arrive with each major game update. Bookmark this page and check back after every patch."
+        "question": "Will a codes page be added later?",
+        "answer": "Only if the developer confirms a code system through an official source."
       },
       {
-        "question": "Do codes expire?",
-        "answer": "Yes — most codes have an expiry date, shown next to each code. Expired codes move to the expired table below."
+        "question": "Where should code claims be verified?",
+        "answer": "Check the official website, Steam news, and developer social channels before trusting a code claim."
       }
     ],
     "possiblyOutdated": "This guide was last checked on",
@@ -117,286 +117,229 @@
     "paginationAria": "Article pagination"
   },
   "overview": {
-    "bosses": {
-      "overviewTitle": "All Bosses",
-      "overviewDescription": "Complete strategy guides for every boss in Anvil Quest, including attack patterns, weaknesses, and recommended loadouts."
-    },
     "guides": {
-      "overviewTitle": "All Guides",
-      "overviewDescription": "In-depth tutorials covering progression, crafting, combat mechanics, and advanced strategies for Anvil Quest."
+      "overviewTitle": "Withering Realms Guides",
+      "overviewDescription": "Release, platform, gameplay, trailer, and official-source guides for Withering Realms."
     },
     "items": {
-      "overviewTitle": "All Items",
-      "overviewDescription": "Comprehensive item database with locations, stats, rarity tiers, and crafting recipes."
+      "overviewTitle": "Withering Realms Items",
+      "overviewDescription": "Confirmed doll-arm weapons, artifacts, and upgrade materials without speculative stats or drop rates."
     },
-    "codes": {
-      "overviewTitle": "All Codes",
-      "overviewDescription": "Active Anvil Quest codes for free coins, gems, and exclusive items. Verified daily."
+    "maps": {
+      "overviewTitle": "Withering Realms World",
+      "overviewDescription": "Explore Penwyll, confirmed locations, world expansion, nighttime changes, and traversal discoveries."
+    },
+    "characters": {
+      "overviewTitle": "Withering Realms Characters",
+      "overviewDescription": "Meet Clover, her doll guardian, Althea, and the people connected to the game's 1926 mystery."
     }
   },
   "home": {
     "meta": {
-      "title": "Anvil Quest Wiki - Complete Boss Guides, Codes & Tier Lists",
-      "description": "The most complete Anvil Quest wiki. Boss strategies, active codes, item locations, tier lists, and beginner guides. Updated daily by the community."
-    },
-    "hero": {
-      "badge": "Fan-Made Community Wiki",
-      "title": "Anvil Quest Wiki",
-      "description": "Your complete guide to Anvil Quest. Boss strategies, active codes, item locations, tier lists, and everything you need to master the forge.",
-      "ctaPrimary": "Play Anvil Quest",
-      "ctaSecondary": "Browse Guides",
-      "videoId": ""
+      "title": "Withering Realms Wiki: Release Date, Gameplay and Guides",
+      "description": "Independent Withering Realms wiki with source-checked release details, gameplay, locations, weapons, characters, official links, and Early Access updates.",
+      "watermark": "Withering Realms"
     },
     "updates": {
-      "title": "Recent Updates"
+      "badge": "Fresh",
+      "title": "Recent updates"
     },
-    "start": {
-      "badge": "Start Here",
-      "title": "Your Anvil Quest Journey",
-      "cards": [
+    "popular": {
+      "badge": "Popular",
+      "title": "Most read",
+      "quickLinks": [
         {
-          "number": "1",
-          "title": "Beginner Guide",
-          "description": "New to Anvil Quest? Start here with the essential mechanics, controls, and your first hour walkthrough.",
-          "icon": "lucide:book-open",
-          "href": "/guides/beginner-guide"
+          "label": "Is It Coming to PS5?",
+          "href": "/guides/platforms-console-release"
         },
         {
-          "number": "2",
-          "title": "Active Codes",
-          "description": "Redeem the latest codes for free coins, gems, and exclusive cosmetic items.",
-          "icon": "lucide:gift",
-          "href": "/codes"
+          "label": "Doll Arm Weapons",
+          "href": "/items/doll-arm-weapons"
         },
         {
-          "number": "3",
-          "title": "Boss Strategies",
-          "description": "Complete guides for every boss with attack patterns, weaknesses, and recommended loadouts.",
-          "icon": "lucide:swords",
-          "href": "/bosses"
+          "label": "Nighttime World Changes",
+          "href": "/maps/nighttime-world-changes"
         },
         {
-          "number": "4",
-          "title": "Weapon Tier List",
-          "description": "Ranking every weapon from S to C based on DPS, utility, and synergy.",
-          "icon": "lucide:list-ordered",
-          "href": "/guides/weapon-tier-list"
+          "label": "Althea's Abilities",
+          "href": "/characters/althea-ally-abilities"
         }
       ]
     },
-    "popular": {
-      "badge": "Trending Now",
-      "title": "Most Read This Week",
-      "quickLinks": [
+    "closingCta": {
+      "title": "Start your Withering Realms journey",
+      "description": "Bookmark this wiki and check back after every game update.",
+      "primary": {
+        "label": "Browse all",
+        "href": "/guides"
+      },
+      "secondary": {
+        "label": "Official site",
+        "href": "https://witheringrealms.com"
+      }
+    },
+    "hero": {
+      "badge": "Withering Realms",
+      "title": "Withering Realms Wiki",
+      "description": "Source-checked guides to the release, gameplay, world, weapons, and characters confirmed by Moonless Formless.",
+      "ctaPrimary": {
+        "label": "Release guide",
+        "href": "/guides/release-date-early-access"
+      },
+      "ctaSecondary": {
+        "label": "Browse all",
+        "href": "/guides"
+      }
+    },
+    "start": {
+      "badge": "Quick start",
+      "title": "New here?",
+      "cards": [
         {
-          "label": "Emberfang Boss Guide",
-          "href": "/bosses/emberfang"
+          "number": "1",
+          "title": "Release Date",
+          "description": "Early Access timing, launch scope, and what is confirmed.",
+          "icon": "lucide:calendar",
+          "href": "/guides/release-date-early-access"
         },
         {
-          "label": "Best Weapons Tier List",
-          "href": "/guides/weapon-tier-list"
+          "number": "2",
+          "title": "Gameplay Overview",
+          "description": "Combat, exploration, puzzles, and progression at a glance.",
+          "icon": "lucide:swords",
+          "href": "/guides/gameplay-overview"
         },
         {
-          "label": "Beginner Guide",
-          "href": "/guides/beginner-guide"
+          "number": "3",
+          "title": "Penwyll and the World",
+          "description": "The central town and every officially confirmed location.",
+          "icon": "lucide:map",
+          "href": "/maps/penwyll-confirmed-locations"
         },
         {
-          "label": "All Active Codes",
-          "href": "/codes"
+          "number": "4",
+          "title": "Story and Characters",
+          "description": "Clover, the doll guardian, and the altered world of 1926.",
+          "icon": "lucide:users",
+          "href": "/characters/story-setting-clover-doll"
         }
       ]
     },
     "explore": {
-      "title": "Explore the Wiki",
-      "description": "Everything you need, organized by category. Pick a topic and dive in.",
+      "title": "Explore",
+      "description": "Browse confirmed information by topic. Each article identifies its official sources and unresolved details.",
       "modules": [
         {
           "order": 1,
-          "name": "Anvil Quest Codes",
-          "description": "Active codes for free coins, gems, and exclusive items. Updated daily.",
-          "href": "/codes",
-          "displayType": "badge-list",
+          "name": "Withering Realms Guides",
+          "description": "Release, platform, gameplay, trailers, and official links.",
+          "href": "/guides",
+          "displayType": "labeled-cards",
           "highlights": [
             {
-              "label": "FORGE-2026",
-              "detail": "+500 Gold · expires Aug 31",
-              "badge": "Active"
+              "label": "Release",
+              "detail": "Early Access begins September 2, 2026 on Windows PC."
             },
             {
-              "label": "EMBERBORN",
-              "detail": "2× XP (30 min) · expires Aug 31",
-              "badge": "Active"
+              "label": "Platforms",
+              "detail": "Steam is confirmed now; consoles are planned after full release."
             },
             {
-              "label": "ASHENKEEP",
-              "detail": "Ashen Keep cosmetic set",
-              "badge": "Active"
+              "label": "Gameplay",
+              "detail": "Action RPG combat, exploration, mystery, and puzzles."
             }
           ]
         },
         {
           "order": 2,
-          "name": "Boss Strategies",
-          "description": "Complete guides for every boss with attack patterns and weaknesses.",
-          "href": "/bosses",
+          "name": "Withering Realms Items",
+          "description": "Officially named weapons, artifacts, and materials.",
+          "href": "/items",
           "displayType": "labeled-cards",
           "highlights": [
             {
-              "label": "Emberfang",
-              "detail": "Frost warden, early-game gatekeeper"
+              "label": "Doll Arms",
+              "detail": "Chain Rock, Machinegun, Flamethrower, and other confirmed attachments."
             },
             {
-              "label": "Stormcaller",
-              "detail": "Fire titan, mid-game DPS check"
+              "label": "Artifacts",
+              "detail": "Confirmed equipment and progression concepts without invented values."
             },
             {
-              "label": "Voidking",
-              "detail": "Final boss, requires full prep"
+              "label": "Source Notes",
+              "detail": "Official wording differences are recorded instead of guessed away."
             }
           ]
         },
         {
           "order": 3,
-          "name": "Progression Guides",
-          "description": "Leveling routes, class builds, and endgame preparation.",
-          "href": "/guides",
-          "displayType": "steps",
+          "name": "Withering Realms World",
+          "description": "Penwyll, surrounding locations, and how exploration changes.",
+          "href": "/maps",
+          "displayType": "labeled-cards",
           "highlights": [
             {
-              "label": "1",
-              "detail": "Pick a starting class"
+              "label": "Penwyll",
+              "detail": "The central town contains shops and characters to meet."
             },
             {
-              "label": "2",
-              "detail": "Clear the tutorial forge"
+              "label": "Night Revisits",
+              "detail": "Returning after dark can reveal new creatures and secrets."
             },
             {
-              "label": "3",
-              "detail": "Unlock the Shattered Isles"
-            },
-            {
-              "label": "4",
-              "detail": "Defeat your first world boss"
+              "label": "Expansion",
+              "detail": "Defeating perimeter guardians opens more of the world."
             }
           ]
         },
         {
           "order": 4,
-          "name": "Weapon Tier List",
-          "description": "Ranking every weapon from S to C based on DPS, utility, and synergy.",
-          "href": "/guides/weapon-tier-list",
-          "displayType": "ranked-grid",
+          "name": "Withering Realms Characters",
+          "description": "The confirmed cast and the mystery that connects them.",
+          "href": "/characters",
+          "displayType": "labeled-cards",
           "highlights": [
             {
-              "label": "S",
-              "detail": "Voidforge Blade, Stormcaller"
+              "label": "Clover",
+              "detail": "A nine-year-old ghost who awakens in a decaying mansion."
             },
             {
-              "label": "A",
-              "detail": "Emberclaw, Frostpike"
+              "label": "Doll Guardian",
+              "detail": "Clover's protector is built from wood, metal, and human remains."
             },
             {
-              "label": "B",
-              "detail": "Ironwood Bow, Mace of Dawn"
-            },
-            {
-              "label": "C",
-              "detail": "Starter weapons"
-            }
-          ]
-        },
-        {
-          "order": 5,
-          "name": "Update History",
-          "description": "Major patches and events, newest first.",
-          "href": "/recent",
-          "displayType": "timeline",
-          "highlights": [
-            {
-              "label": "v2.5",
-              "detail": "New raid: Shadowforge released",
-              "badge": "Latest"
-            },
-            {
-              "label": "v2.4",
-              "detail": "Rebalanced all S-tier weapons"
-            },
-            {
-              "label": "v2.3",
-              "detail": "Added 3 new bosses"
-            },
-            {
-              "label": "v2.2",
-              "detail": "Launched season pass system"
-            }
-          ]
-        },
-        {
-          "order": 6,
-          "name": "Video Guides",
-          "description": "Watch the best Anvil Quest walkthroughs and boss fights.",
-          "href": "/guides",
-          "displayType": "video-grid",
-          "highlights": [
-            {
-              "title": "Beginner Walkthrough",
-              "youtubeId": "dQw4w9WgXcQ",
-              "duration": "12:34"
-            },
-            {
-              "title": "All Bosses Ranked",
-              "youtubeId": "aaaaaaaaaaa",
-              "duration": "18:42"
-            },
-            {
-              "title": "Speedrun Guide",
-              "youtubeId": "bbbbbbbbbbb",
-              "duration": "25:10"
-            },
-            {
-              "title": "Hidden Secrets",
-              "youtubeId": "ccccccccccc",
-              "duration": "9:15"
+              "label": "Althea",
+              "detail": "A freelance investigator with interrogation, lockpicking, and forgery skills."
             }
           ]
         }
       ]
     },
     "faq": {
-      "title": "Frequently Asked Questions",
-      "description": "Quick answers to the most common questions about Anvil Quest.",
+      "title": "FAQ",
+      "description": "Answers based on the official website and Steam listing, checked August 26, 2026.",
       "items": [
         {
-          "question": "What is Anvil Quest?",
-          "answer": "Anvil Quest is a fantasy RPG on Roblox where you play as a blacksmith apprentice forging weapons and battling bosses across the Shattered Isles. It launched in January 2026 and has over 12 million visits."
+          "question": "When does Withering Realms enter Early Access?",
+          "answer": "Withering Realms is scheduled to enter Steam Early Access on September 2, 2026."
         },
         {
-          "question": "Which class should beginners pick in Anvil Quest?",
-          "answer": "Warrior is the most beginner-friendly class thanks to high HP and simple mechanics. Once you understand the game, Rogue offers the highest damage output for experienced players."
+          "question": "Is Withering Realms confirmed for PS5?",
+          "answer": "No specific console is confirmed. The developer says console versions are planned after the full PC release."
         },
         {
-          "question": "How do I redeem codes in Anvil Quest?",
-          "answer": "Open the game, click the settings gear in the top-right, paste your code into the 'Redeem Code' field, and hit confirm. Codes are case-sensitive."
+          "question": "Is Withering Realms a roguelike?",
+          "answer": "No. Some areas randomize when entered, but death does not remove items, equipment, or story progress."
         },
         {
-          "question": "Is Anvil Quest free to play?",
-          "answer": "Yes, Anvil Quest is completely free on Roblox. There are optional cosmetic microtransactions, but they do not affect gameplay balance."
-        },
-        {
-          "question": "How often does Anvil Quest update?",
-          "answer": "Forge Studios releases major content updates roughly every two weeks, with smaller hotfixes in between. New bosses and codes are typically added with each major patch."
+          "question": "Will the Early Access version be playable from beginning to end?",
+          "answer": "Yes. The official FAQ says the initial Early Access release can be played from start to finish, with more side quests and end-game modes planned."
         }
       ]
-    },
-    "closingCta": {
-      "title": "Ready to Master the Forge?",
-      "description": "Bookmark this wiki and check back daily for new codes, boss guides, and tier list updates.",
-      "primary": "Play Anvil Quest",
-      "secondary": "Join Our Discord"
     }
   },
   "footer": {
-    "playGame": "Play Anvil Quest",
+    "playGame": "Wishlist Withering Realms",
     "officialDiscord": "Official Discord",
     "officialYoutube": "Official YouTube",
     "officialTwitter": "Official Twitter",
@@ -406,7 +349,7 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "copyright": "Copyright",
-    "copyrightText": "© 2026 Anvil Quest Wiki. Fan-made, not affiliated with Forge Studios.",
+    "copyrightText": "© 2026 Withering Realms Wiki. All rights reserved.",
     "community": "Community",
     "legal": "Legal"
   }

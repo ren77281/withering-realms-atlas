@@ -53,6 +53,18 @@ const popular = home.popular ?? { quickLinks: [] };
 const explore = home.explore ?? { modules: [] };
 const closingCta = home.closingCta ?? {};
 
+type Cta = string | { label: string; href: string };
+function ctaLabel(cta: Cta): string {
+  return typeof cta === 'string' ? cta : cta.label;
+}
+function ctaHref(cta: Cta, fallback: string): string {
+  const href = typeof cta === 'string' ? fallback : cta.href;
+  return href.startsWith('/') ? localizePath(href, locale) : href;
+}
+function isExternalHref(href: string): boolean {
+  return /^https?:\/\//.test(href);
+}
+
 // QuickLink may be a string or { label, href } — normalize for the sidebar list.
 type QuickLink = string | { label: string; href: string };
 const trendingLinks: QuickLink[] = Array.isArray(popular.quickLinks) ? popular.quickLinks : [];
@@ -72,13 +84,18 @@ function trendingLabel(link: QuickLink): string {
   jsonLd={jsonLd}
 >
   {/* ─────────────────────────────── Hero ─────────────────────────────── */}
-  <section class="relative flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]">
-    {/* Subtle theme-color gradient backdrop — gives the hero a visual anchor
-        without requiring an image asset. Sits behind the watermark. */}
+  <section
+    class="relative flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]"
+  >
+    {
+      /* Subtle theme-color gradient backdrop — gives the hero a visual anchor
+        without requiring an image asset. Sits behind the watermark. */
+    }
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute inset-0 bg-gradient-to-br from-nav/8 via-transparent to-transparent"
-    />
+      class="from-nav/8 pointer-events-none absolute inset-0 bg-gradient-to-br via-transparent to-transparent"
+    >
+    </div>
     {/* Faint game-name watermark — pure CSS, no image asset required. */}
     <span
       aria-hidden="true"
@@ -99,20 +116,34 @@ function trendingLabel(link: QuickLink): string {
         {
           hero.ctaPrimary && (
             <a
-              href={site.social.official}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ctaHref(hero.ctaPrimary, site.social.official)}
+              target={
+                isExternalHref(ctaHref(hero.ctaPrimary, site.social.official))
+                  ? '_blank'
+                  : undefined
+              }
+              rel={
+                isExternalHref(ctaHref(hero.ctaPrimary, site.social.official))
+                  ? 'noopener noreferrer'
+                  : undefined
+              }
               class="btn-primary"
             >
-              <Icon name="lucide:play" class="mr-2 h-4 w-4" />
-              {hero.ctaPrimary}
+              <Icon name="lucide:book-open" class="mr-2 h-4 w-4" />
+              {ctaLabel(hero.ctaPrimary)}
             </a>
           )
         }
         {
           hero.ctaSecondary && (
-            <a href={listPath(NAVIGATION_CONFIG[1]?.key ?? 'guides', locale)} class="btn-outline">
-              {hero.ctaSecondary}
+            <a
+              href={ctaHref(
+                hero.ctaSecondary,
+                listPath(NAVIGATION_CONFIG[0]?.key ?? 'guides', locale),
+              )}
+              class="btn-outline"
+            >
+              {ctaLabel(hero.ctaSecondary)}
             </a>
           )
         }
@@ -124,12 +155,7 @@ function trendingLabel(link: QuickLink): string {
   {hero.videoId && <VideoSection videoId={hero.videoId} title={`${site.game.name} trailer`} />}
 
   {/* ───────────────────────────── Quick Start ────────────────────────── */}
-  <QuickStart
-    locale={locale}
-    badge={start.badge}
-    title={start.title}
-    cards={start.cards}
-  />
+  <QuickStart locale={locale} badge={start.badge} title={start.title} cards={start.cards} />
 
   {/* ───────────────────── Recent Updates + Trending ───────────────────── */}
   <section class="section border-t border-border">
@@ -138,8 +164,9 @@ function trendingLabel(link: QuickLink): string {
       <div class="lg:col-span-2">
         <div class="flex items-baseline justify-between">
           <h2 class="text-2xl font-bold">{updates.title}</h2>
-          <a href={listPath(NAVIGATION_CONFIG[1]?.key ?? 'guides', locale)} class="text-sm text-foreground hover:text-nav hover:underline"
-            >{shared.browseAll}</a
+          <a
+            href={listPath(NAVIGATION_CONFIG[0]?.key ?? 'guides', locale)}
+            class="text-sm text-foreground hover:text-nav hover:underline">{shared.browseAll}</a
           >
         </div>
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
@@ -168,36 +195,40 @@ function trendingLabel(link: QuickLink): string {
       </div>
 
       {/* Trending — 1/3 width sidebar list. */}
-      {trendingLinks.length > 0 && (
-        <aside>
-          <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{popular.badge}</p>
-          <h2 class="mt-1 text-2xl font-bold">{popular.title}</h2>
-          <ul class="mt-4 space-y-2">
-            {trendingLinks.map((link: QuickLink) => {
-              const href = trendingHref(link);
-              const label = trendingLabel(link);
-              return (
-                <li>
-                  {href ? (
-                    <a
-                      href={href}
-                      class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium transition hover:border-nav/50"
-                    >
-                      <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
-                      <span class="leading-snug">{label}</span>
-                    </a>
-                  ) : (
-                    <div class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium">
-                      <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
-                      <span class="leading-snug">{label}</span>
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </aside>
-      )}
+      {
+        trendingLinks.length > 0 && (
+          <aside>
+            <p class="text-sm font-semibold uppercase tracking-wider text-foreground">
+              {popular.badge}
+            </p>
+            <h2 class="mt-1 text-2xl font-bold">{popular.title}</h2>
+            <ul class="mt-4 space-y-2">
+              {trendingLinks.map((link: QuickLink) => {
+                const href = trendingHref(link);
+                const label = trendingLabel(link);
+                return (
+                  <li>
+                    {href ? (
+                      <a
+                        href={href}
+                        class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium transition hover:border-nav/50"
+                      >
+                        <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
+                        <span class="leading-snug">{label}</span>
+                      </a>
+                    ) : (
+                      <div class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium">
+                        <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
+                        <span class="leading-snug">{label}</span>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </aside>
+        )
+      }
     </div>
   </section>
 
@@ -223,21 +254,41 @@ function trendingLabel(link: QuickLink): string {
           <p class="mx-auto mt-2 max-w-xl text-muted-foreground">{closingCta.description}</p>
           <div class="mt-6 flex justify-center gap-3">
             <a
-              href={site.social.official}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ctaHref(closingCta.primary, site.social.official)}
+              target={
+                isExternalHref(ctaHref(closingCta.primary, site.social.official))
+                  ? '_blank'
+                  : undefined
+              }
+              rel={
+                isExternalHref(ctaHref(closingCta.primary, site.social.official))
+                  ? 'noopener noreferrer'
+                  : undefined
+              }
               class="btn-primary"
             >
-              {closingCta.primary}
+              {ctaLabel(closingCta.primary)}
             </a>
-            {closingCta.secondary && site.social.discord && (
+            {closingCta.secondary && (
               <a
-                href={site.social.discord}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={ctaHref(closingCta.secondary, site.social.discord ?? site.social.official)}
+                target={
+                  isExternalHref(
+                    ctaHref(closingCta.secondary, site.social.discord ?? site.social.official),
+                  )
+                    ? '_blank'
+                    : undefined
+                }
+                rel={
+                  isExternalHref(
+                    ctaHref(closingCta.secondary, site.social.discord ?? site.social.official),
+                  )
+                    ? 'noopener noreferrer'
+                    : undefined
+                }
                 class="btn-outline"
               >
-                {closingCta.secondary}
+                {ctaLabel(closingCta.secondary)}
               </a>
             )}
           </div>

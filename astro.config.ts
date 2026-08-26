@@ -8,6 +8,7 @@ import * as path from 'node:path';
 
 import { locales, defaultLocale } from './src/i18n/routing';
 import { CONTENT_TYPES } from './src/config/navigation';
+import { site } from './src/config/site';
 
 /**
  * Build a map of page path → lastmod ISO date, read from MDX frontmatter
@@ -123,7 +124,7 @@ function buildLastmodMap(noindexPaths: Set<string>, coverage: Map<string, Set<st
   return map;
 }
 
-const siteOrigin = process.env.SITE_URL || 'https://anvilwiki.pages.dev';
+const siteOrigin = process.env.SITE_URL || `https://${site.domain}`;
 
 const noindexPaths = new Set<string>();
 const localeCoverage = new Map<string, Set<string>>();
@@ -168,7 +169,7 @@ function alternatesFor(pagePath: string): Array<{ lang: string; url: string }> |
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://anvilwiki.pages.dev',
+  site: siteOrigin,
   output: 'static',
   trailingSlash: 'never',
   image: {

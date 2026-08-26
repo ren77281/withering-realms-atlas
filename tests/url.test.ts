@@ -12,18 +12,12 @@ import {
 describe('url helpers', () => {
   describe('localizePath', () => {
     it('returns the path unchanged for the default locale (en)', () => {
-      expect(localizePath('/bosses', 'en')).toBe('/bosses');
-      expect(localizePath('/bosses/emberfang', 'en')).toBe('/bosses/emberfang');
-    });
-
-    it('prepends the locale prefix for non-default locales', () => {
-      expect(localizePath('/bosses', 'ja')).toBe('/ja/bosses');
-      expect(localizePath('/bosses/emberfang', 'ja')).toBe('/ja/bosses/emberfang');
+      expect(localizePath('/guides', 'en')).toBe('/guides');
+      expect(localizePath('/guides/gameplay-overview', 'en')).toBe('/guides/gameplay-overview');
     });
 
     it('ensures leading slash on input without one', () => {
       expect(localizePath('about', 'en')).toBe('/about');
-      expect(localizePath('about', 'ja')).toBe('/ja/about');
     });
   });
 
@@ -31,32 +25,22 @@ describe('url helpers', () => {
     it('returns / for default locale', () => {
       expect(homeUrl('en')).toBe('/');
     });
-    it('returns /ja for non-default locale', () => {
-      expect(homeUrl('ja')).toBe('/ja');
-    });
   });
 
   describe('listPath', () => {
     it('builds the correct list URL for each locale', () => {
-      expect(listPath('bosses', 'en')).toBe('/bosses');
-      expect(listPath('bosses', 'ja')).toBe('/ja/bosses');
-      expect(listPath('codes', 'en')).toBe('/codes');
+      expect(listPath('guides', 'en')).toBe('/guides');
+      expect(listPath('characters', 'en')).toBe('/characters');
     });
   });
 
   describe('detailPath', () => {
     it('builds the correct article URL for each locale', () => {
-      expect(detailPath('bosses', 'emberfang', 'en')).toBe('/bosses/emberfang');
-      expect(detailPath('bosses', 'emberfang', 'ja')).toBe('/ja/bosses/emberfang');
+      expect(detailPath('items', 'doll-arm-weapons', 'en')).toBe('/items/doll-arm-weapons');
     });
 
     it('handles nested slugs', () => {
-      expect(detailPath('guides', 'early-game/beginner', 'en')).toBe(
-        '/guides/early-game/beginner',
-      );
-      expect(detailPath('guides', 'early-game/beginner', 'ja')).toBe(
-        '/ja/guides/early-game/beginner',
-      );
+      expect(detailPath('guides', 'early-game/beginner', 'en')).toBe('/guides/early-game/beginner');
     });
   });
 });
@@ -91,28 +75,19 @@ describe('slugifyTag (CJK / non-ASCII fallback)', () => {
 
 describe('absoluteUrl', () => {
   it('prefixes siteUrl and applies the locale prefix rules', () => {
-    expect(absoluteUrl('/bosses', 'en')).toMatch(/^https:\/\/[^/]+\/bosses$/);
-    expect(absoluteUrl('/bosses', 'ja')).toMatch(/^https:\/\/[^/]+\/ja\/bosses$/);
-    expect(absoluteUrl('/', 'ja')).toMatch(/^https:\/\/[^/]+\/ja$/);
+    expect(absoluteUrl('/guides', 'en')).toMatch(/^https:\/\/[^/]+\/guides$/);
   });
 });
 
 describe('languageAlternates', () => {
   it('builds absolute hreflang entries for exactly the given locales', () => {
-    const alts = languageAlternates((loc) => detailPath('bosses', 'x', loc), ['en', 'ja']);
-    expect(alts).toHaveLength(2);
-    expect(alts[0]).toEqual({ hreflang: 'en', href: expect.stringMatching(/\/bosses\/x$/) });
-    expect(alts[1]).toEqual({ hreflang: 'ja', href: expect.stringMatching(/\/ja\/bosses\/x$/) });
+    const alts = languageAlternates((loc) => detailPath('guides', 'x', loc), ['en']);
+    expect(alts).toHaveLength(1);
+    expect(alts[0]).toEqual({ hreflang: 'en', href: expect.stringMatching(/\/guides\/x$/) });
   });
 
   it('never emits x-default (BaseLayout derives it separately)', () => {
-    const alts = languageAlternates((loc) => listPath('guides', loc), ['en', 'ja']);
+    const alts = languageAlternates((loc) => listPath('guides', loc), ['en']);
     expect(alts.some((a) => a.hreflang === 'x-default')).toBe(false);
-  });
-
-  it('honors a reduced locale list (single-language article)', () => {
-    const alts = languageAlternates((loc) => detailPath('bosses', 'x', loc), ['ja']);
-    expect(alts).toHaveLength(1);
-    expect(alts[0].hreflang).toBe('ja');
   });
 });

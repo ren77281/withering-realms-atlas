@@ -56,36 +56,35 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'Anvil Quest Wiki',
-  shortName: 'AQ Wiki',
-  description:
-    'Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Updated daily by the community.',
-  domain: 'anvilwiki.pages.dev',
-  tagline: 'Your forge for everything Anvil Quest',
-  legalNotice:
-    'Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
+  name: 'Withering Realms Wiki',
+  shortName: 'WR Wiki',
+  description: 'Independent Withering Realms wiki covering release details, confirmed gameplay systems, locations, weapons, allies, and official updates.',
+  domain: 'withering-realms.gamefieldhq.com',
+  tagline: 'The independent guide to Withering Realms',
+  legalNotice: 'Withering Realms Wiki is a fan-made guide. Not affiliated with or endorsed by Moonless Formless.',
   social: {
-    official: 'https://example.com/anvil-quest',
-    discord: 'https://discord.gg/example',
-    youtube: 'https://youtube.com/@example',
-    twitter: 'https://twitter.com/example',
-    reddit: 'https://reddit.com/r/anvilquest',
+    official: 'https://witheringrealms.com',
+    discord: 'https://discord.gg/hVhhQU8YM9',
+    youtube: 'https://www.youtube.com/@moonlessformless',
+    twitter: 'https://x.com/WitheringRooms',
   },
-  // 👉 APPLY TEMPLATE: point these at the game's real canonical pages.
   sameAs: [
-    'https://example.com/anvil-quest',
-    'https://en.wikipedia.org/wiki/Anvil_Quest',
+    'https://witheringrealms.com',
+    'https://store.steampowered.com/app/3441990/Withering_Realms/',
+    'https://www.moonlessformless.com',
   ],
   game: {
-    name: 'Anvil Quest',
-    platform: 'Roblox',
-    developer: 'Forge Studios',
-    genre: 'Fantasy RPG',
-    releaseDate: '2026-01-15',
+    name: 'Withering Realms',
+    platform: 'Windows PC (Steam)',
+    developer: 'Moonless Formless',
+    genre: 'Horror Action RPG',
+    releaseDate: '2026-09-02',
   },
-  // hero.webp is 1200×630 (the recommended OG share aspect ratio).
+  // og:image dims of the SHIPPED hero.webp — if you replace public/images/hero.webp,
+  // update these in src/config/site.ts to match (wrong dims mis-crop share cards).
   ogImageWidth: 1200,
   ogImageHeight: 630,
+  defaultAuthor: 'Withering Realms Wiki Editorial Team',
 };
 
 /** Absolute site URL (no trailing slash). Falls back to the Astro `site` config. */
