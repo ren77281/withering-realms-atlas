@@ -20,7 +20,7 @@ PUBLIC_GISCUS_MAPPING = "pathname"
 # Sponsor card and analytics remain disabled until real accounts are connected.
 PUBLIC_SPONSOR_URL = ""
 PUBLIC_SPONSOR_IMAGE_URL = ""
-PUBLIC_CF_BEACON_TOKEN = ""
+PUBLIC_CF_BEACON_TOKEN = "f597893b51eb45d998b4e963ae7571c9"
 
 # Optional deployment variables:
 # PUBLIC_ADSENSE_CLIENT = ""
