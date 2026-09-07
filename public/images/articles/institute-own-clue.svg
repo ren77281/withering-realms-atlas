@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect width="1200" height="675" fill="#111827"/>
+<g font-family="Arial, sans-serif" fill="#f3f4f6"><text x="60" y="92" font-size="42" font-weight="bold">Different clues, same reading method</text>
+<rect x="60.0" y="205" width="528.0" height="250" rx="18" fill="#1f2937" stroke="#5eead4" stroke-width="2"/>
+<text x="84.0" y="290" font-size="32" fill="#fbbf24">Example A: 1-6</text>
+<text x="84.0" y="370" font-size="30">Book 1 / word 6</text>
+<rect x="612.0" y="205" width="528.0" height="250" rx="18" fill="#1f2937" stroke="#5eead4" stroke-width="2"/>
+<text x="636.0" y="290" font-size="32" fill="#fbbf24">Example B: 2-4</text>
+<text x="636.0" y="370" font-size="30">Book 2 / word 4</text>
+<text x="60" y="540" font-size="28">Illustrative inputs: follow the numbers in your own clue.</text>
+<text x="60" y="620" font-size="22" fill="#9ca3af">Editorial illustration • not a gameplay screenshot or test result</text></g></svg>
