@@ -9,6 +9,7 @@
 | 文档 | 一句话 | 读者 |
 |---|---|---|
 | [handbook/](handbook/) | 📚 站内手册源码:学习手册 11 章(SOP+提示词)+ 开发手册 7 章,中英双语 | 🎯 新手从[学习手册](https://anvilwiki.pages.dev/zh/landing/docs/learn)开始 |
+| [site-operations.md](site-operations.md) | Withering Realms 当前阶段、11 步推进顺序与不可跳过的运营门禁 | 本站维护者 / AI Agent |
 | [game-selection.md](game-selection.md) | 做哪个游戏?上线第一天写什么? | 🎯 想建站赚钱的人(从这里开始) |
 | [sourcing.md](sourcing.md) | 去哪挖词:9 个渠道 + 第 7 条判断(意图满足度)+ 选词决策管理表 | 🎯 候选池不够大、想系统挖词的人 |
 | [requirements/](../requirements/) | 建站前内容准备两张表:事实来源表 + 对标参考表(模板) | 🎯 选好游戏、准备让 AI 产页的人 |
@@ -16,6 +17,7 @@
 | [apply-template.md](apply-template.md) | 把 demo 站换成你的游戏(配置层手册) | fork 用户 |
 | [deployment.md](deployment.md) | 部署到 Cloudflare Pages(含 wrangler.toml 大坑 + 数据复盘 + Clarity) | fork 用户 |
 | [ads.md](ads.md) | 广告时机 + AdSense 收款 + Adsterra 接入与收款 + 平台全景三档 + 游戏垂直网络 | 开始赚钱的站长 |
+| [blog-seo-authoring.md](blog-seo-authoring.md) | 本站博客文章的 TDK、结构、图片 SEO、内链、E-E-A-T 与发布验收硬规则 | 内容作者 / AI Agent |
 | [content-format.md](content-format.md) | 怎么写文章(frontmatter 字段表 + 组件用法) | 内容作者 |
 | [seo.md](seo.md) | SEO 工程化 + 外链实操(九渠道逐步教程) + 2026 Google 官方更新记录 | 内容作者 / 好奇的人 |
 | [comments.md](comments.md) | 接入 Giscus 评论 | 需要评论的站长 |
@@ -37,6 +39,7 @@
 ```
 0. 站内学习手册           ← 引导式主线:选品→建站→AI 产页→部署→变现运营
                             (https://anvilwiki.pages.dev/zh/landing/docs,含提示词)
+   + site-operations.md    ← 本 fork 当前阶段与门禁;每次操作先看
 1. game-selection.md      ← 先回答"做哪个游戏",这比建站重要
    └ sourcing.md          ← 候选池不够大时:9 个挖词渠道 + 选词决策管理表
 2. README                 ← fork + 本地跑起来(5 分钟)
@@ -51,9 +54,10 @@
 ### ✍️ 路径 B:我是内容作者(站已建好,我来写文章)
 
 ```
-1. content-format.md      ← 唯一必读:frontmatter 字段表 + 正文规则 + 组件清单
-2. seo.md 第 1-4 条       ← 问题式 H2、Quick Answer——为什么这么写
-3. (日常) 对 AI 说"帮我写一篇 X"即可——.agent/skills/ 会自动生效
+1. blog-seo-authoring.md  ← 本站强制创作规范:TDK、结构、图片、内链、E-E-A-T
+2. content-format.md      ← frontmatter 字段表 + 正文规则 + 组件清单
+3. seo.md 第 1-4 条       ← 问题式 H2、Quick Answer——为什么这么写
+4. (日常) 对 AI 说"帮我写一篇 X"即可——.agent/skills/ 会自动生效
    兑换码更新 → /anvil-update-codes;不知道该更新什么 → /anvil-refresh
 ```
 

@@ -12,8 +12,22 @@ Goal: let beginners deploy a game wiki site to Cloudflare Pages for free (unlimi
 
 ## Read These First
 
+- **`docs/site-operations.md`** — Withering Realms 站点级执行基线。处理选题、内容、SEO、统计、广告、部署或多站扩展前必须先读，并按其中的阶段门禁推进。
 - **`docs/PRD.md`** — the single source of truth for architecture, data models, module design, and roadmap. **Read before any code change.** 15 chapters + 3 appendices.
 - `README.md` — project pitch + quick start (Chinese + English).
+
+## Withering Realms Fork Rules
+
+This repository is the production source for `https://withering-realms.gamefieldhq.com/`, not a generic demo workspace.
+
+1. Follow the 11-stage learning-manual sequence recorded in `docs/site-operations.md`; do not jump to ads, batch publishing, templating, or a third game site before the preceding gate is satisfied. The existing portfolio already contains Lootbound and Withering Realms.
+2. For commands and repository behavior, the checked-out version is authoritative. For changing third-party rules or thresholds, verify the current official source before acting.
+3. Never invent game facts. Unverified material stays `draft: true`; every published page needs reliable sources and a manual content review.
+4. Each page targets one primary search intent. Do not create codes, stats, drop-rate, or other template-shaped pages unless the game and evidence genuinely support them.
+5. `wrangler.toml` is this site's Cloudflare environment source of truth while it exists. Do not assume dashboard variables override it.
+6. After a push intended for production, completion requires Cloudflare reaching a terminal success state and live verification of the affected URLs.
+7. Do not start a persistent Goal for routine site work. Continue through reversible routine steps; pause for login, CAPTCHA, payment, irreversible operations, or a decision that materially changes scope.
+8. Before creating or substantially optimizing a blog article, read and follow `docs/blog-seo-authoring.md`. Its TDK, structure, image, internal-link, E-E-A-T, and verification requirements are mandatory for this fork.
 
 ## Intended Tech Stack (verified, as of 2026-08-11)
 
@@ -74,7 +88,7 @@ Content layer (src/content, src/locales)                   — fully replace per
 
 Fork users drive this template from AI coding agents (ZCode / Claude Code / Codex / Cursor). They should be able to say "write a boss guide from these notes" and get a build-passing MDX page — no scripts required for authoring. Rules for any agent creating content:
 
-1. **Read before writing**: `docs/content-format.md` (field table + body rules), `src/content.config.ts` (Zod schema is the hard gate — invalid frontmatter fails `pnpm build`; `category` is a schema-level `z.enum(CONTENT_TYPES)` since the 2026-08-23 audit fix, a typo'd category fails the build instead of shipping a soft-404), `src/config/navigation.ts`, and one existing article of the same type for structure.
+1. **Read before writing**: `docs/blog-seo-authoring.md` (this fork's mandatory editorial SEO rules), `docs/content-format.md` (field table + body rules), `src/content.config.ts` (Zod schema is the hard gate — invalid frontmatter fails `pnpm build`; `category` is a schema-level `z.enum(CONTENT_TYPES)` since the 2026-08-23 audit fix, a typo'd category fails the build instead of shipping a soft-404), `src/config/navigation.ts`, and one existing article of the same type for structure.
 2. **Hard frontmatter rules**: `description` 40–165 chars; `title` ≤ 80 chars; H1 never in the body (first heading is H2, question-shaped); `summary` is a 40–60 word direct answer (Quick Answer card + AI Overviews candidate; schema cap 400 chars — English at 40–60 words runs 250–350); `tags` reuse existing tag vocabulary (grep `tags:` under `src/content/wiki/`); unverified drafts get `draft: true`; fast-patching games get `gameVersion`.
 3. **Media density**: every article gets a cover (`image`, `src/assets/covers/`, **1200×675** since v2.0 — Google Discover large-preview ≥1200px; generate with `pnpm gen-covers`; codes pages included, share-card identity). Boss guides pair ≥1 video (inline `<Video>` + frontmatter `videos` registration) with 2–4 `gallery` mechanics shots; guides use inline card images (`![alt](/images/articles/…)` — 16:9, `public/images/articles/`; globals.css reserves a 16:9 zero-CLS box for bare markdown `<img>`); tier lists put a card image on headline entries. Demo references: `en/bosses/stormcaller.mdx` (gallery), `en/guides/weapon-tier-list.mdx` (inline), `en/guides/beginner-guide.mdx` (gallery). Full table: `docs/content-format.md` 媒体密度建议.
 4. **Component vocabulary** (import from `~/components/...`): `CodeBlock` (codes), `StatBar` (boss/item stat bars), `Callout` (info/tip/warn/danger), `Accordion` (collapsible detail), `Video` (inline YouTube, register IDs in frontmatter `videos` for JSON-LD), `AffiliateLink` (sponsored, auto `rel`), plus frontmatter-driven `boss` stat card / `codes` (Active+Expired auto-split) / `videos` / `gallery`.
