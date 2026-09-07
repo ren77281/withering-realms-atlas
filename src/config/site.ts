@@ -32,6 +32,8 @@ export interface SiteConfig {
    * this wiki to the game's knowledge-graph entity.
    */
   sameAs?: string[];
+  /** Public source repository for corrections and contributions. */
+  repository?: string;
   game: {
     /** Full game name. */
     name: string;
@@ -73,6 +75,7 @@ export const site: SiteConfig = {
     'https://store.steampowered.com/app/3441990/Withering_Realms/',
     'https://www.moonlessformless.com',
   ],
+  repository: 'https://github.com/ren77281/withering-realms-atlas',
   game: {
     name: 'Withering Realms',
     platform: 'Windows PC (Steam)',
